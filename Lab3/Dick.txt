@@ -1,0 +1,75 @@
+package DatSpellCheck;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException; 
+public class Dick {
+private int Q = 1319;
+final private Heap[] array;
+public Dick() {
+this.Q = Q;
+array = new Heap[Q];
+for (int i = 0; i < Q; i++) {
+array[i] = new Heap();
+}
+}
+private int hash(String key) {
+return (key.hashCode() & 0x7fffffff) % Q;
+}
+public void add(String key) {
+array[hash(key)].put(key);
+}
+public boolean contains(String input) {
+input = input.toLowerCase();
+return array[hash(input)].get(input);
+}
+public void build(String filePath) {
+try {
+BufferedReader reader = new BufferedReader(new FileReader(filePath));
+String line;
+while ((line = reader.readLine()) != null) {
+    add(line);
+}
+} catch (IOException ioe) {
+ioe.printStackTrace();
+}
+}
+public String[] getRandomEntries(int num){
+String[] toRet = new String[num];
+for (int i = 0; i < num; i++){
+Node n = array[(int)Math.random()*Q].first;
+int rand = (int)Math.random()*(int)Math.sqrt(num);
+for(int j = 0; j<rand && n.next!= null; j++) n = n.next;
+toRet[i]=n.word;
+}
+return toRet;
+}
+class Heap {
+private Point first;
+public boolean get(String in) {        
+Point next = first;
+while (next != null) {
+    if (next.word.equals(in)) {
+        return true;
+    }
+    next = next.next;
+}
+return false;
+}
+public void put(String key) {
+for (Point curr = first; curr != null; curr = curr.next) {
+    if (key.equals(curr.word)) {
+        return;                  
+    }
+}
+first = new Point(key, first); 
+}
+class Point {
+String word;
+Point next;
+public Point(String key, Point next) {
+    this.word = key;
+    this.next = next;
+}
+    }
+}
+}

@@ -1,0 +1,59 @@
+package quicksort;
+
+import java.util.Random;
+
+
+public class Main {
+    
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+        Quicksort s = new Quicksort();
+
+        // Make The array of random numbers...in this case it is numarray
+        Comparable numarray[] = new Comparable[10000];
+
+        for (int i = 0; i < 10000; i++) {
+            Random ran = new Random();
+            numarray[i] = ran.nextInt();
+        }
+
+        StopWatch timer = new StopWatch();
+
+        s.Quicksort(numarray, 0, numarray.length - 1);
+        if (s.isSorted(numarray)) {
+            System.out.println(timer.elapsedTime());
+        }
+        s.display(numarray);
+
+    }
+
+}
+/*
+Program Output——
+Result of display: 
+
+282142219
+282278904
+282637465
+283320093
+283474287
+283729972
+284409688
+… ect… All Sorted.
+
+Data Taken from the StopWatch used on the improved Quicksort with different 
+    M Values:
+(All times in Milliseconds)
+//QuickSort the array and Time how long it takes using Stopwatch class
+    //Data Table
+    // With N = 10^2  M = 5----> .012 M = 10---->.011  M = 15------> .03    
+    M = 20 ---->.007   M=30----->.003
+    // With N = 10^3  M = 5---->.053  M = 10---->.07   M = 15------>.21     
+    M = 20 ---->.066   M=30----->.187
+    // With N = 10^4  M = 5---->1.797 M = 10---->1.972 M = 15------> 1.785  
+    M = 20 ----> 1.948 M=30---->1.833
+*/

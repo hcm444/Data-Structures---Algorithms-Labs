@@ -1,0 +1,67 @@
+run:
+
+: hey
+
+hey no mistakes found
+
+: thar
+ not spelled correctly, did you mean:
+
+  -tar
+
+: there
+
+there no mistakes found
+
+: how
+
+how no mistakes found
+
+: are
+
+are no mistakes found
+
+: u
+ not spelled correctly, word not found.
+
+
+: at
+ not spelled correctly, did you mean:
+
+  -bat
+  -cat
+  -eat
+  -ate
+  -fat
+  -gat
+  -hat
+  -mat
+  -oat
+  -pat
+  -rat
+  -sat
+  -tat
+  -vat
+
+: baseball?
+ not spelled correctly, did you mean:
+
+  -baseball
+
+: um
+ not spelled correctly, did you mean:
+
+  -bum
+  -cum
+  -gum
+  -hum
+  -mum
+  -ump
+  -rum
+  -sum
+
+: goodbye
+
+goodbye no mistakes found
+
+: 

@@ -1,0 +1,89 @@
+package linklistmergesort;
+
+
+public class LinkListMergeSort {
+   Node first;
+   public class Node{
+       public int val;
+       public Node next;
+       public Node(int v){
+           val=v;
+       }
+       public void printNode(){
+           System.out.print(" {"+val+"} ");
+       }
+   }
+   public LinkListMergeSort(){
+       first = null;
+   }
+   
+   public void insert(int v){
+       Node newNode= new Node(v);
+       newNode.next= first;
+       first = newNode;
+   }
+   
+   public boolean isEmpty(){
+       return (first == null);
+   }
+   
+   public void printLinkedList(){
+       Node current = first;
+       while(current!=null){
+           current.printNode();
+           current = current.next;
+       }
+   }
+   
+   public boolean LessThan(Node a,Node b){
+       return(b.val >= a.val);
+   }
+   
+   public Node getFirst(){
+       return first;
+   }
+   public void FindFirstTwoRuns(Node n){
+       Node xtail, ytail;
+       while(n.next != null && LessThan(n,n.next)){
+           n = n.next;
+       }
+       xtail = n;
+       if (xtail.next != null){
+           n = xtail.next;
+           while(n.next != null && LessThan(n,n.next)){
+               n = n.next;
+           }
+           ytail = n;
+           System.out.println("Xtail = "+xtail.val);
+           System.out.println("Ytail = "+ytail.val);
+           SortFirstTwoRuns(xtail,ytail);
+       }
+   }
+   
+   public void SortFirstTwoRuns(Node xtail, Node ytail){
+       printLinkedList();
+       Node n = first;
+       if(LessThan(xtail.next, first)){
+           Node temp;
+           temp = xtail.next;
+           xtail.next = (xtail.next).next;
+           temp.next = first;
+           first = temp;
+           SortFirstTwoRuns(xtail, ytail);
+       }
+       else {
+           while(!n.equals(xtail)){
+               if(LessThan(xtail.next,n.next)){
+                   Node temp = xtail.next;
+                   xtail.next = (xtail.next).next;
+                   temp.next = n.next;
+                   n.next = temp;
+                   n = n.next;
+                   SortFirstTwoRuns(xtail, ytail);
+               }
+               else n = n.next;
+           }
+       }
+       if(n.equals(xtail)) FindFirstTwoRuns(first);
+   }
+}

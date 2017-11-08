@@ -1,0 +1,7 @@
+run:
+Enter Calculation:
+
+1*2/4*5+7-6
+
+Answer = 3.5
+BUILD SUCCESSFUL (total time: 17 seconds)

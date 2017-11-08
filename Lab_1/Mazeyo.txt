@@ -1,0 +1,109 @@
+package Maze;
+import java.io.*;
+public class Mazeyo
+{
+static int numr=10; //number of rows
+static 	int numc=10; //number of columns
+static int startr=0; //start row
+static int startc=1; //start column
+static int endr=9; //end row
+static int endc=8; //end column
+static 	int myMaze[][]={{1,0,1,1,1,1,1,1,1,1},
+                        {1,0,0,1,1,1,0,1,0,1},
+                        {1,0,0,1,1,0,0,1,0,1},
+                        {1,1,0,0,0,0,0,0,0,1},
+                        {1,1,1,0,1,1,0,1,0,1},
+                        {1,0,0,0,0,1,0,0,0,1},
+                        {1,0,1,1,1,1,0,1,0,1},
+                        {1,0,1,1,1,1,0,1,0,1},
+                        {1,0,0,0,0,1,0,0,0,1},
+                        {1,1,1,0,1,1,1,1,0,1}};
+static 	int[] spath=new int[numr*numc];
+static 	int slength;
+boolean beenhere(int row, int col, int pathsofar[], int lengthsofar){
+int x;
+int target = row*numc+col;  //unique id's for maze square
+for (x=0;x<lengthsofar;x++)
+    if (pathsofar[x]==target) return true;
+return false;
+}
+public void showmypath(int mypath[], int mylength){
+int r,c;
+for (r=0;r<numr;r++){
+    for(c=0;c<numc;c++){
+            if (myMaze[r][c]==1)
+                    System.out.print("|");//  | walls
+            else if (r==startr && c==startc)
+                    System.out.print("S");// S start position
+            else if (r==endr && c==endc)
+                    System.out.print("X"); //  X exit position
+            else if (beenhere(r,c,mypath,mylength))
+                    System.out.print("o"); //  o path
+            else
+                    System.out.print(" "); //    space
+    }
+    System.out.println("");
+}
+}
+public void findpath(int row, int col, int pathsofar[], int lengthsofar){
+//If found a path, output and store in "spath", if shorter then current
+//termination conditions
+if (row<0 || col<0 || row>=numr || col>=numc)//out of bounds
+    return;
+if (myMaze[row][col]==1) return ; //wall
+if (beenhere(row, col, pathsofar, lengthsofar)) return;
+//previously visited
+int mypath[]=new int[lengthsofar+1];
+System.arraycopy(pathsofar, 0, mypath, 0, lengthsofar);
+mypath[lengthsofar++]=row*numc+col;
+if (row==endr && col==endc){
+    //at end
+    System.out.println("PATH LENGTH:"+lengthsofar+"!:");
+    showmypath(mypath, lengthsofar);
+    if (lengthsofar<=slength){ //check for shorter path
+            slength=lengthsofar;
+            System.arraycopy(mypath, 0, spath, 0, lengthsofar);
+            System.out.println(" (NEW PATH LENGTH:" + lengthsofar + ")");
+    }
+    System.out.println("");
+    return;
+}
+findpath(row-1, col, mypath, lengthsofar);
+findpath(row, col-1, mypath, lengthsofar);
+findpath(row, col+1, mypath, lengthsofar);
+findpath(row+1, col, mypath, lengthsofar);
+}
+public static void main(String[] args)
+{
+int r,c,x;//counters
+int pathsofar[]; //start path
+int lengthsofar; //start length
+Mazeyo daMaze=new Mazeyo(); //maze object
+pathsofar=new int[daMaze.numr*daMaze.numc]; //max size
+for (x=0;x<daMaze.numr*daMaze.numc;x++){
+    daMaze.spath[x]=-1; //path array
+    pathsofar[x]=-1;
+}
+daMaze.slength=daMaze.numr*daMaze.numc+1;
+lengthsofar=0;
+System.out.println("MAZE:");
+for (r=0;r<daMaze.numr;r++){
+    for (c=0;c<daMaze.numc;c++){
+            if (r==startr && c==startc)
+                    System.out.print("S");	//maze state
+            else if (r==endr && c==endc)
+                    System.out.print("x");
+            else if (daMaze.myMaze[r][c]==0)
+                    System.out.print(" ");
+            else System.out.print("|");
+    }
+    System.out.println("");
+}
+System.out.println("");
+System.out.println("PATHFINDING");
+daMaze.findpath(startr, startc, pathsofar, lengthsofar);
+System.out.println("");
+System.out.println("SHORTEST PATH:"+ daMaze.slength);
+daMaze.showmypath(daMaze.spath, daMaze.slength);
+}
+}

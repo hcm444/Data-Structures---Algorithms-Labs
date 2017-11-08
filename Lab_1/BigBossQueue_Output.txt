@@ -1,0 +1,21 @@
+run:
+adding at front: 45
+[45]
+adding at rear: 65
+[45, 65]
+removed from front: 45
+[65]
+removed from front: 65
+[]
+Deque underflow!! unable to remove.
+adding at front: 21
+[21]
+adding at front: 98
+[98, 21]
+adding at rear: 5
+[98, 21, 5]
+adding at front: 43
+[43, 98, 21, 5]
+removed from front: 5
+[43, 98, 21]
+BUILD SUCCESSFUL (total time: 0 seconds)

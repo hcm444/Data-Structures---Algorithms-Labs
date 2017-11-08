@@ -1,0 +1,99 @@
+package quicksort;
+
+
+public class Quicksort {
+
+    public static Integer computeMedof3(Integer[] a) {
+        Integer m = a[a.length / 2];
+        Integer l = a[0];
+        Integer x = a[a.length];
+        if (m < x && x < l) {
+            return x;
+        } else if (x < m && m < l) {
+            return m;
+        } else {
+            return l;
+        }
+    }
+
+    public Integer getpivot(Integer[] a) {
+        return computeMedof3(a);
+    }
+
+    public static boolean isSorted(Comparable[] a) {  
+    // Test whether the array entries are in order.
+        for (int i = 1; i < a.length; i++) {
+            if (less(a[i], a[i - 1])) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static boolean less(Comparable v, Comparable w) {
+        return v.compareTo(w) < 0;
+    }
+
+    public static void insertionSort(Comparable[] a, int i, int j) {
+        int N = a.length;
+        for (i = 1; i < N; i++) {  
+        // Insert a[i] among a[i-1], a[i-2], a[i-3]..
+            for (j = i; j > 0 && less(a[j], a[j - 1]); j--) {
+                exch(a, j, j - 1);
+            }
+        }
+    }
+
+    public static void exch(Comparable[] a, int i, int j) {
+        Comparable t = a[i];
+        a[i] = a[j];
+        a[j] = t;
+    }
+
+    public void display(Comparable array[]) {
+        for (int i = 0; i < array.length; i++) {
+            System.out.println(array[i]);
+        }
+    }
+// Improved version of Quickksort with cutoff to instertion Sort.
+
+    public static void Quicksort(Comparable[] a, int lo, int hi) {
+
+        if (hi <= lo + 20 /* 20 is M in this case. */) {
+            insertionSort(a, lo, hi);
+            return;
+
+        }
+        int j = partition(a, lo, hi);
+
+        Quicksort(a, lo, j - 1);
+        Quicksort(a, j + 1, hi);
+
+    }
+
+    public static int partition(Comparable[] a, int lo, int hi) {  
+        // Partition into a[lo..i-1], a[i], a[i+1..hi].
+        int i = lo, j = hi + 1;    // left and right scan indices
+        Comparable v = a[lo];    // partitioning item
+        while (true) {  
+        // Scan right, scan left, check for scan complete, and exchange.
+            while (less(a[++i], v)) {
+                if (i == hi) {
+                    break;
+                }
+            }
+            while (less(v, a[--j])) {
+                if (j == lo) {
+                    break;
+                }
+            }
+            if (i >= j) {
+                break;
+            }
+            exch(a, i, j);
+        }
+
+        exch(a, lo, j);
+        return j;
+    }
+}

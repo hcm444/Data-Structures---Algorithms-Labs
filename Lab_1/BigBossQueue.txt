@@ -1,0 +1,66 @@
+
+package com.java2novice.ds.queue;
+import java.util.ArrayList;
+import java.util.List;
+public class DoubleEndedQueueImp {
+    private List<Integer> deque = new ArrayList<Integer>();
+    public void InsertBeginning(int item){
+        System.out.println("adding at front: "+item);
+        deque.add(0,item);
+        System.out.println(deque);
+    }
+    public void InsertEnd(int item){
+        System.out.println("adding at rear: "+item);
+        deque.add(item);
+        System.out.println(deque);
+    }
+    public void RemoveBeginning(){
+        if(deque.isEmpty()){
+            System.out.println("Deque underflow, unable to remove");
+            return;
+        }
+        int rem = deque.remove(0);
+        System.out.println("removed from front: "+rem);
+        System.out.println(deque);
+    }
+     
+    public void RemoveEnd(){
+        if(deque.isEmpty()){
+            System.out.println("Deque underflow, unable to remove");
+            return;
+        }
+        //remove an item from the beginning of the queue
+        int rem = deque.remove(deque.size()-1);
+        System.out.println("removed from front: "+rem);
+        System.out.println(deque);
+    }
+     
+    public int peakFront(){
+        //gets the element from the front without removing it
+        int item = deque.get(0);
+        System.out.println("Element at first: "+item);
+        return item;
+    }
+     
+    public int peakRear(){
+        //gets the element from the rear without removing it
+        int item = deque.get(deque.size()-1);
+        System.out.println("Element at rear: "+item);
+        return item;
+    }
+     
+    public static void main(String a[]){
+         
+        DoubleEndedQueueImp deq = new DoubleEndedQueueImp();
+        deq.InsertBeginning(34);
+        deq.InsertEnd(65);
+        deq.RemoveBeginning();
+        deq.RemoveBeginning();
+        deq.RemoveBeginning();
+        deq.InsertBeginning(21);
+        deq.InsertBeginning(98);
+        deq.InsertEnd(5);
+        deq.InsertBeginning(43);
+        deq.RemoveEnd();
+    }
+}

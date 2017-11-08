@@ -1,0 +1,229 @@
+run:
+MAZE:
+|S||||||||
+|  ||| | |
+|  ||  | |
+||       |
+||| || | |
+|    |   |
+| |||| | |
+| |||| | |
+|    |   |
+||| ||||x|
+
+PATHFINDING
+PATH LENGTH:23!:
+|S||||||||
+|oo||| | |
+| o||oo| |
+||ooooooo|
+||| || |o|
+|    |ooo|
+| ||||o| |
+| ||||o| |
+|    |ooo|
+||| ||||X|
+ (NEW PATH LENGTH:23)
+
+PATH LENGTH:19!:
+|S||||||||
+|oo||| | |
+| o||oo| |
+||ooooooo|
+||| || |o|
+|    |  o|
+| |||| |o|
+| |||| |o|
+|    |  o|
+||| ||||X|
+ (NEW PATH LENGTH:19)
+
+PATH LENGTH:19!:
+|S||||||||
+|oo||| | |
+| o||oo| |
+||ooooo  |
+||| ||o| |
+|    |ooo|
+| |||| |o|
+| |||| |o|
+|    |  o|
+||| ||||X|
+ (NEW PATH LENGTH:19)
+
+PATH LENGTH:19!:
+|S||||||||
+|oo||| | |
+| o||oo| |
+||ooooo  |
+||| ||o| |
+|    |o  |
+| ||||o| |
+| ||||o| |
+|    |ooo|
+||| ||||X|
+ (NEW PATH LENGTH:19)
+
+PATH LENGTH:21!:
+|S||||||||
+|oo||| | |
+| o||  | |
+||ooooooo|
+||| || |o|
+|    |ooo|
+| ||||o| |
+| ||||o| |
+|    |ooo|
+||| ||||X|
+
+PATH LENGTH:17!:
+|S||||||||
+|oo||| | |
+| o||  | |
+||ooooooo|
+||| || |o|
+|    |  o|
+| |||| |o|
+| |||| |o|
+|    |  o|
+||| ||||X|
+ (NEW PATH LENGTH:17)
+
+PATH LENGTH:17!:
+|S||||||||
+|oo||| | |
+| o||  | |
+||ooooo  |
+||| ||o| |
+|    |ooo|
+| |||| |o|
+| |||| |o|
+|    |  o|
+||| ||||X|
+ (NEW PATH LENGTH:17)
+
+PATH LENGTH:17!:
+|S||||||||
+|oo||| | |
+| o||  | |
+||ooooo  |
+||| ||o| |
+|    |o  |
+| ||||o| |
+| ||||o| |
+|    |ooo|
+||| ||||X|
+ (NEW PATH LENGTH:17)
+
+PATH LENGTH:23!:
+|S||||||||
+|o ||| | |
+|oo||oo| |
+||ooooooo|
+||| || |o|
+|    |ooo|
+| ||||o| |
+| ||||o| |
+|    |ooo|
+||| ||||X|
+
+PATH LENGTH:19!:
+|S||||||||
+|o ||| | |
+|oo||oo| |
+||ooooooo|
+||| || |o|
+|    |  o|
+| |||| |o|
+| |||| |o|
+|    |  o|
+||| ||||X|
+
+PATH LENGTH:19!:
+|S||||||||
+|o ||| | |
+|oo||oo| |
+||ooooo  |
+||| ||o| |
+|    |ooo|
+| |||| |o|
+| |||| |o|
+|    |  o|
+||| ||||X|
+
+PATH LENGTH:19!:
+|S||||||||
+|o ||| | |
+|oo||oo| |
+||ooooo  |
+||| ||o| |
+|    |o  |
+| ||||o| |
+| ||||o| |
+|    |ooo|
+||| ||||X|
+
+PATH LENGTH:21!:
+|S||||||||
+|o ||| | |
+|oo||  | |
+||ooooooo|
+||| || |o|
+|    |ooo|
+| ||||o| |
+| ||||o| |
+|    |ooo|
+||| ||||X|
+
+PATH LENGTH:17!:
+|S||||||||
+|o ||| | |
+|oo||  | |
+||ooooooo|
+||| || |o|
+|    |  o|
+| |||| |o|
+| |||| |o|
+|    |  o|
+||| ||||X|
+ (NEW PATH LENGTH:17)
+
+PATH LENGTH:17!:
+|S||||||||
+|o ||| | |
+|oo||  | |
+||ooooo  |
+||| ||o| |
+|    |ooo|
+| |||| |o|
+| |||| |o|
+|    |  o|
+||| ||||X|
+ (NEW PATH LENGTH:17)
+
+PATH LENGTH:17!:
+|S||||||||
+|o ||| | |
+|oo||  | |
+||ooooo  |
+||| ||o| |
+|    |o  |
+| ||||o| |
+| ||||o| |
+|    |ooo|
+||| ||||X|
+ (NEW PATH LENGTH:17)
+
+
+SHORTEST PATH:17
+|S||||||||
+|o ||| | |
+|oo||  | |
+||ooooo  |
+||| ||o| |
+|    |o  |
+| ||||o| |
+| ||||o| |
+|    |ooo|
+||| ||||X|
+BUILD SUCCESSFUL (total time: 1 second)

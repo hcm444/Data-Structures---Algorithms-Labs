@@ -1,0 +1,100 @@
+package DatSpellCheck;
+import java.util.ArrayList;
+import java.util.Scanner;
+public class DaCheck {
+private Dick dict;
+final static String filePath = "c:/Users/Admin/desktop/words.txt";
+final static char[] letterlist = "abcdefghijklmnopqrstuvwxyz".toCharArray();
+DaCheck() {
+dict = new Dick();
+dict.build(filePath);
+}
+void run() {
+Scanner scan = new Scanner(System.in);
+boolean complete = false;
+String input;
+while (true) {
+System.out.print("\n: ");
+input = scan.nextLine();
+if (input.equals("")) {
+    break;
+}
+if (dict.contains(input)) {
+    System.out.println("\n" + input + " no mistakes found");
+} else {
+    System.out.print(" not spelled correctly, ");
+    System.out.println(printSuggestions(input));
+}
+}
+}
+String printSuggestions(String input) {
+StringBuilder sb = new StringBuilder();
+ArrayList<String> print = makeSuggestions(input);
+if (print.size() == 0) {
+return "word not found.\n";
+}
+sb.append("did you mean:\n");
+for (String s : print) {
+sb.append("\n  -" + s);
+}
+return sb.toString();
+}
+private ArrayList<String> makeSuggestions(String input) {
+ArrayList<String> toReturn = new ArrayList<>();
+toReturn.addAll(charAppended(input));
+toReturn.addAll(charMissing(input));
+toReturn.addAll(charsSwapped(input));
+return toReturn;
+}
+private ArrayList<String> charAppended(String input) { 
+ArrayList<String> toReturn = new ArrayList<>();
+for (char c : letterlist) {
+String atFront = c + input;
+String atBack = input + c;
+if (dict.contains(atFront)) {
+    toReturn.add(atFront);
+}
+if (dict.contains(atBack)) {
+    toReturn.add(atBack);
+}
+}
+return toReturn;
+}
+private ArrayList<String> charMissing(String input) {   
+ArrayList<String> toReturn = new ArrayList<>();
+
+int len = input.length() - 1;
+if (dict.contains(input.substring(1))) {
+toReturn.add(input.substring(1));
+}
+for (int i = 1; i < len; i++) {
+String working = input.substring(0, i);
+working = working.concat(input.substring((i + 1), input.length()));
+if (dict.contains(working)) {
+    toReturn.add(working);
+}
+}
+if (dict.contains(input.substring(0, len))) {
+toReturn.add(input.substring(0, len));
+}
+return toReturn;
+}
+private ArrayList<String> charsSwapped(String input) {   
+ArrayList<String> toReturn = new ArrayList<>();
+
+for (int i = 0; i < input.length() - 1; i++) {
+String working = input.substring(0, i);
+working = working + input.charAt(i + 1); 
+working = working + input.charAt(i); 
+working = working.concat(input.substring((i + 2)));
+if (dict.contains(working)) {
+    toReturn.add(working);
+}
+}
+return toReturn;
+}
+public static void main(String[] args) {
+DaCheck sc = new DaCheck();
+sc.run();
+}
+}
